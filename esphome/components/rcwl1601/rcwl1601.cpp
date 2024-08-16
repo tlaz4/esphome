@@ -13,9 +13,8 @@ void RCWL1601::setup(){
 void RCWL1601::update(){
   publish_state(42.0);
 
-  uint8_t data[3];
-  this->read_data_(data);
-  ESP_LOGD(TAG, "Distance: ", &data);
+  this->read_data_();
+  ESP_LOGD(TAG, "Distance: ", "measured");
 
 }
 
@@ -26,14 +25,14 @@ void RCWL1601::dump_config(){
    }
 }
 
-bool RCWL1601::read_data_(uint8_t *data){
+bool RCWL1601::read_data_(){
   uint32_t data;
   uint8_t val = 0x01 ;
   this->write(&val, 1);
 
   delay_microseconds_safe(20000);
-
   uint8_t data_buffer[] = {0,0,0,0,0};
+
   this->read(data_buffer,3);
 
   data = data_buffer[0]<< 16 | data_buffer[1]<< 8 | data_buffer[2];
