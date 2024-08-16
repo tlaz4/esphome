@@ -32,7 +32,7 @@ float RCWL1601::read_data_(){
   uint8_t val = 0x01 ;
   this->write(&val, 1);
 
-  delay_microseconds_safe(20000);
+  delay(120);
   uint8_t data_buffer[] = {0,0,0,0,0};
 
   this->read(data_buffer,3);
