@@ -27,17 +27,17 @@ void RCWL1601::dump_config(){
 }
 
 bool RCWL1601::read_data_(uint8_t *data){
-  if (this->write_byte(0x01, 0x57, 1) != i2c::ERROR_OK) {
-    this->mark_failed();
-    ESP_LOGE(TAG, "Failed to write!");
-    return false;
-  }
+  uint32_t data;
+  uint8_t val = 0x01 ;
+  this->write(&val, 1);
+
   delay_microseconds_safe(20000);
-  if (this->read(data, sizeof(data)) != i2c::ERROR_OK) {
-    this->mark_failed();
-    ESP_LOGE(TAG, "Failed to read!");
-    return false;
-  }
+
+  uint8_t data_buffer[] = {0,0,0,0,0};
+  this->read(data_buffer,3);
+
+  data = data_buffer[0]<< 16 | data_buffer[1]<< 8 | data_buffer[2];
+  ESP_LOGD(TAG, "Distance: ", data);
 
   return true;
 
