@@ -29,13 +29,13 @@ void RCWL1601::dump_config(){
 bool RCWL1601::read_data_(uint8_t *data){
   uint8_t start_reading = 1;
 
-  if(this->write(&start_reading, 1) != i2c::ERROR_OK){
+  if (this->write(&start_reading, 1) != i2c::ERROR_OK) {
     this->mark_failed();
     ESP_LOGE(TAG, "Failed to write!");
     return false;
   }
   delay_microseconds_safe(20000);
-  if(this->read(data, sizeof(data) != i2c::ERROR_OK){
+  if (this->read(data, sizeof(data)) != i2c::ERROR_OK) {
     this->mark_failed();
     ESP_LOGE(TAG, "Failed to read!");
     return false;
