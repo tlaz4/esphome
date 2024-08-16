@@ -40,7 +40,7 @@ float RCWL1601::read_data_(){
   data = data_buffer[0]<< 16 | data_buffer[1]<< 8 | data_buffer[2];
   float distance = float(data) / 1000;
 
-  return float;
+  return distance;
 }
 
 } // namespace RCWL1601
