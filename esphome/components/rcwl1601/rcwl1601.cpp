@@ -11,7 +11,7 @@ void RCWL1601::setup(){
 }
 
 void RCWL1601::update(){
-  publish_state(42.0)
+  publish_state(42.0);
 }
 
 void RCWL1601::dump_config(){
