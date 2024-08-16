@@ -8,7 +8,7 @@ namespace esphome {
 namespace rcwl1601 {
 
 
-class RCWL1601 : public sensor:Sensor, public PollingComponent, public i2c::I2CDevice {
+class RCWL1601 : public sensor::Sensor, public PollingComponent, public i2c::I2CDevice {
   public:
     void setup() override;
     void update() override;
