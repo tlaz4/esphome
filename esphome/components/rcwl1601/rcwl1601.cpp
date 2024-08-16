@@ -15,7 +15,7 @@ void RCWL1601::update(){
 
   uint8_t data[3];
   this->read_data_(data);
-  LOG_SENSOR(data);
+  LOG_SENSOR(" ", "distance", data);
 
 }
 
@@ -28,8 +28,10 @@ void RCWL1601::dump_config(){
 
 bool RCWL1601::read_data_(uint8_t *data){
   this->write_byte(0, '1');
-  delayMicroseconds(20000);
+  delay_microseconds_safe(20000);
   this->read_bytes(0, data, 3);
+
+  return true;
 
 }
 
