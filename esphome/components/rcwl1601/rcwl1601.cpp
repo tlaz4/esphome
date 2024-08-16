@@ -2,7 +2,7 @@
 #include "rcwl1601.h"
 
 namespace esphome {
-namespace rcwl1601_sensor {
+namespace rcwl1601 {
 
 static const char *TAG = "rcwl1601.sensor";
 
@@ -18,5 +18,5 @@ void RCWL1601::dump_config(){
 
 }
 
-}
-}
+} // namespace RCWL1601
+} // namespace esphome
