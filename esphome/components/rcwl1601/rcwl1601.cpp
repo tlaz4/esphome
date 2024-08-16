@@ -13,8 +13,10 @@ void RCWL1601::setup(){
 void RCWL1601::update(){
   publish_state(42.0);
 
-  this->read_data_();
-  ESP_LOGD(TAG, "Distance: ", "measured");
+  float result = this->read_data_();
+  ESP_LOGD(TAG, "%s - Got distance: %.2f mm", this->name_.c_str(), result);
+
+  publish_state(result);
 
 }
 
@@ -25,7 +27,7 @@ void RCWL1601::dump_config(){
    }
 }
 
-bool RCWL1601::read_data_(){
+float RCWL1601::read_data_(){
   uint32_t data;
   uint8_t val = 0x01 ;
   this->write(&val, 1);
@@ -36,10 +38,9 @@ bool RCWL1601::read_data_(){
   this->read(data_buffer,3);
 
   data = data_buffer[0]<< 16 | data_buffer[1]<< 8 | data_buffer[2];
-  ESP_LOGD(TAG, "Distance: ", data);
+  float distance = float(data) / 1000;
 
-  return true;
-
+  return float;
 }
 
 } // namespace RCWL1601
