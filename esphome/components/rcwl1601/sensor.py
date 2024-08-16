@@ -17,7 +17,7 @@ CONFIG_SCHEMA = (
         unit_of_measurement=UNIT_MILLIMETER,
         icon=ICON_RULER,
         accuracy_decimals=1,
-        device_class=DEVICE_CLASS_TEMPERATURE,
+        device_class=DEVICE_CLASS_DISTANCE,
         state_class=STATE_CLASS_MEASUREMENT
     )
     .extend(cv.polling_component_schema("5s"))
