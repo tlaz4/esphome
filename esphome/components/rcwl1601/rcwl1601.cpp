@@ -37,7 +37,7 @@ float RCWL1601::read_data_(){
   this->read(data_buffer,3);
 
   data = data_buffer[0]<< 16 | data_buffer[1]<< 8 | data_buffer[2];
-  float distance = float(data) / 1000;
+  float distance = float(data);
 
   ESP_LOGD(TAG, "%s - Got distance: %.2f mm", this->name_.c_str(), distance);
 
