@@ -27,7 +27,8 @@ void RCWL1601::dump_config(){
 }
 
 bool RCWL1601::read_data_(uint8_t *data){
-  this->write((byte)1, 1);
+  uint8_t start_reading = 1;
+  this->write(&start_reading, 1);
   delay_microseconds_safe(20000);
   this->read(data, sizeof(data));
 
