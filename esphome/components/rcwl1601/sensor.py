@@ -7,7 +7,7 @@ DEPENDENCIES = ["i2c"]
 
 
 rcwl1601_ns = cg.esphome_ns.namespace("rcwl1601")
-RCWL1601 = rcwl1601_sensor_ns.class_(
+RCWL1601 = rcwl1601_ns.class_(
     "RCWL1601", cg.PollingComponent, i2c.I2CDevice
 )
 
