@@ -13,6 +13,9 @@ class RCWL1601 : public sensor::Sensor, public PollingComponent, public i2c::I2C
     void setup() override;
     void update() override;
     void dump_config() override;
+
+  protected:
+    bool read_data_(uint8_t *data);
 };
 } // namespace RCWL1601
 } // namespace esphome
