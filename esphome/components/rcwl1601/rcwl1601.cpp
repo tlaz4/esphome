@@ -27,9 +27,7 @@ void RCWL1601::dump_config(){
 }
 
 bool RCWL1601::read_data_(uint8_t *data){
-  uint8_t read = 0b00000001;
-
-  if (this->write(&read, 1) != i2c::ERROR_OK) {
+  if (this->write_byte(0x01, 0x57, 1) != i2c::ERROR_OK) {
     this->mark_failed();
     ESP_LOGE(TAG, "Failed to write!");
     return false;
