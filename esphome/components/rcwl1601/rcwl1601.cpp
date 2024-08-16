@@ -15,7 +15,7 @@ void RCWL1601::update(){
 
   uint8_t data[3];
   this->read_data_(data);
-  LOG_SENSOR(" ", "distance", "hi");
+  LOG_SENSOR(" ", "Distance", 44.0);
 
 }
 
