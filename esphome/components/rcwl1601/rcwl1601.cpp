@@ -15,7 +15,7 @@ void RCWL1601::update(){
 
   uint8_t data[3];
   this->read_data_(data);
-   ESP_LOGD(TAG, "Distance: ", data);
+  ESP_LOGD(TAG, "Distance: ", &data);
 
 }
 
