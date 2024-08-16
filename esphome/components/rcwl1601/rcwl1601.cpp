@@ -14,7 +14,7 @@ void RCWL1601::update(){
   publish_state(42.0);
 
   uint8_t data[3];
-  ESP_LOGD(TAG, this->read_data_(data));
+  this->read_data_(data);
   ESP_LOGD(TAG, "Distance: ", &data);
 
 }
@@ -31,11 +31,13 @@ bool RCWL1601::read_data_(uint8_t *data){
 
   if(this->write(&start_reading, 1) != i2c::ERROR_OK){
     this->mark_failed();
+    ESP_LOGE(TAG, "Failed to write!");
     return false;
   }
   delay_microseconds_safe(20000);
   if(this->read(data, sizeof(data) != i2c::ERROR_OK){
     this->mark_failed();
+    ESP_LOGE(TAG, "Failed to read!");
     return false;
   }
 
