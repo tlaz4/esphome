@@ -7,7 +7,7 @@ namespace rcwl1601 {
 static const char *TAG = "rcwl1601.sensor";
 
 void RCWL1601::setup(){
-
+  ESP_LOGI(TAG, "Ultrasonic Sensor Setup begin");
 }
 
 void RCWL1601::update(){
@@ -21,10 +21,9 @@ void RCWL1601::update(){
 }
 
 void RCWL1601::dump_config(){
-   LOG_I2C_DEVICE(this);
-   if (this->is_failed()) {
-     ESP_LOGE(TAG, "Communication with rcwl1206 failed!");
-   }
+  LOG_SENSOR(TAG, "Ultrasonic Sensor", this);
+  ESP_LOGD(TAG , "Ultrasonic Sensor I2C Address :  %x", this->address_);
+  LOG_UPDATE_INTERVAL(this);
 }
 
 float RCWL1601::read_data_(){
@@ -39,6 +38,8 @@ float RCWL1601::read_data_(){
 
   data = data_buffer[0]<< 16 | data_buffer[1]<< 8 | data_buffer[2];
   float distance = float(data) / 1000;
+
+  ESP_LOGD(TAG, "%s - Got distance: %.2f mm", this->name_.c_str(), distance);
 
   return distance;
 }
