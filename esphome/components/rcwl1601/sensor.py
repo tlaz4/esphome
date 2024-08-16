@@ -6,14 +6,14 @@ from esphome.const import ICON_RULER, UNIT_MILLIMETER
 DEPENDENCIES = ["i2c"]
 
 
-rcwl1601_sensor_ns = cg.esphome_ns.namespace("rcwl1601")
-RCWL1601Sensor = rcwl1601_sensor_ns.class_(
-    "RCWL-1601", cg.PollingComponent, i2c.I2CDevice
+rcwl1601_ns = cg.esphome_ns.namespace("rcwl1601")
+RCWL1601 = rcwl1601_sensor_ns.class_(
+    "RCWL1601", cg.PollingComponent, i2c.I2CDevice
 )
 
 CONFIG_SCHEMA = (
     sensor.sensor_schema(
-        RCWL1601Sensor,
+        RCWL1601,
         unit_of_measurement=UNIT_MILLIMETER,
         icon=ICON_RULER,
         accuracy_decimals=1
