@@ -27,7 +27,7 @@ void RCWL1601::dump_config(){
 }
 
 bool RCWL1601::read_data_(uint8_t *data){
-  uint8_t start_reading = std::(byte)1;
+  uint8_t start_reading = (std::byte)1;
 
   if (this->write(&start_reading, 1) != i2c::ERROR_OK) {
     this->mark_failed();
