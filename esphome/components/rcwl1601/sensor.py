@@ -20,7 +20,7 @@ CONFIG_SCHEMA = (
         device_class=DEVICE_CLASS_DISTANCE,
         state_class=STATE_CLASS_MEASUREMENT,
     )
-    .extend(cv.polling_component_schema("5s"))
+    .extend(cv.polling_component_schema("60s"))
     .extend(i2c.i2c_device_schema(0x57))
     .extend({cv.GenerateID(): cv.declare_id(RCWL1601)})
 )

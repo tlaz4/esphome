@@ -11,8 +11,6 @@ void RCWL1601::setup(){
 }
 
 void RCWL1601::update(){
-  publish_state(42.0);
-
   float result = this->read_data_();
   ESP_LOGD(TAG, "%s - Got distance: %.2f mm", this->name_.c_str(), result);
 
@@ -38,8 +36,6 @@ float RCWL1601::read_data_(){
 
   data = data_buffer[0]<< 16 | data_buffer[1]<< 8 | data_buffer[2];
   float distance = float(data) / 1000;
-
-  ESP_LOGD(TAG, "%s - Got distance: %.2f mm", this->name_.c_str(), distance);
 
   return distance;
 }
